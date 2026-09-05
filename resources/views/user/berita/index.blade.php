@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Berita Desa - Desa Digital</title>
+    <title>Berita Desa - {{ $profil?->nama_desa ?: 'Desa Digital' }}</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -24,13 +24,26 @@
             {{-- LOGO --}}
             <a href="{{ route('home') }}" class="flex items-center gap-3">
 
-                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-green-700 text-white">
-                    <i data-lucide="landmark" class="h-5 w-5"></i>
+               <div
+                    class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-green-600 text-white sm:h-11 sm:w-11"
+                >
+                    @if($profil?->foto)
+                        <img
+                            src="{{ asset('storage/' . $profil->foto) }}"
+                            alt="{{ $profil?->nama_desa ?? 'Logo Desa' }}"
+                            class="h-full w-full object-cover"
+                        >
+                    @else
+                        <i
+                            data-lucide="landmark"
+                            class="h-5 w-5 sm:h-6 sm:w-6"
+                        ></i>
+                    @endif
                 </div>
 
                 <div>
-                    <h1 class="text-sm font-bold leading-tight text-gray-900 sm:text-base">
-                        Desa Digital
+                   <h1 class="text-sm font-bold leading-tight text-gray-900 sm:text-base">
+                        {{ $profil?->nama_desa ?: 'Desa Digital' }}
                     </h1>
 
                     <p class="hidden text-xs text-gray-500 sm:block">
@@ -403,16 +416,27 @@
 
                     <div class="flex items-center gap-3">
 
-                        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-green-700 text-white">
-
-                            <i data-lucide="landmark" class="h-5 w-5"></i>
-
+                        <div
+                            class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-green-600 text-white"
+                        >
+                            @if($profil?->foto)
+                                <img
+                                    src="{{ asset('storage/' . $profil->foto) }}"
+                                    alt="{{ $profil?->nama_desa ?? 'Logo Desa' }}"
+                                    class="h-full w-full object-cover"
+                                >
+                            @else
+                                <i
+                                    data-lucide="landmark"
+                                    class="h-5 w-5"
+                                ></i>
+                            @endif
                         </div>
 
                         <div>
 
-                            <h3 class="font-bold text-gray-900">
-                                Desa Digital
+                           <h3 class="font-bold text-gray-900">
+                                {{ $profil?->nama_desa ?: 'Desa Digital' }}
                             </h3>
 
                             <p class="text-xs text-gray-500">
@@ -520,7 +544,7 @@
 
             <div class="mt-8 border-t border-gray-100 pt-6 text-center text-xs text-gray-400">
 
-                © {{ date('Y') }} Desa Digital. Semua hak dilindungi.
+                © {{ date('Y') }} {{ $profil?->nama_desa ?: 'Desa Digital' }}. Semua hak dilindungi.
 
             </div>
 

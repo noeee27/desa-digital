@@ -33,21 +33,27 @@
             >
 
                 <div
-                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-700 text-white sm:h-11 sm:w-11"
+                    class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-green-700 text-white sm:h-11 sm:w-11"
                 >
-
-                    <i
-                        data-lucide="landmark"
-                        class="h-5 w-5 sm:h-6 sm:w-6"
-                    ></i>
-
+                    @if($profil?->foto)
+                        <img
+                            src="{{ asset('storage/' . $profil->foto) }}"
+                            alt="{{ $profil?->nama_desa ?? 'Logo Desa' }}"
+                            class="h-full w-full object-cover"
+                        >
+                    @else
+                        <i
+                            data-lucide="landmark"
+                            class="h-5 w-5 sm:h-6 sm:w-6"
+                        ></i>
+                    @endif
                 </div>
 
 
                 <div>
 
                     <h1 class="text-sm font-bold text-gray-900 sm:text-lg">
-                        Desa Digital
+                        {{ $profil?->nama_desa ?: 'Desa Digital' }}
                     </h1>
 
                     <p class="hidden text-xs text-gray-500 sm:block">
@@ -289,7 +295,7 @@
                             class="h-4 w-4"
                         ></i>
 
-                        Selamat Datang di Desa Digital
+                        Selamat Datang di {{ $profil?->nama_desa ?: 'Desa Digital' }}
 
                     </div>
 
@@ -381,21 +387,27 @@
                                 <div class="text-center">
 
                                     <div
-                                        class="mx-auto flex h-24 w-24 items-center justify-center rounded-3xl bg-white text-green-700 shadow-lg"
+                                        class="mx-auto flex h-24 w-24 items-center justify-center overflow-hidden rounded-3xl bg-white text-green-700 shadow-lg"
                                     >
-
-                                        <i
-                                            data-lucide="landmark"
-                                            class="h-12 w-12"
-                                        ></i>
-
+                                        @if($profil?->foto)
+                                            <img
+                                                src="{{ asset('storage/' . $profil->foto) }}"
+                                                alt="{{ $profil?->nama_desa ?? 'Logo Desa' }}"
+                                                class="h-full w-full object-cover"
+                                            >
+                                        @else
+                                            <i
+                                                data-lucide="landmark"
+                                                class="h-12 w-12"
+                                            ></i>
+                                        @endif
                                     </div>
 
 
-                                    <h3
+                                   <h3
                                         class="mt-6 text-xl font-bold text-green-900"
                                     >
-                                        Desa Digital
+                                        {{ $profil?->nama_desa ?: 'Desa Digital' }}
                                     </h3>
 
 
@@ -1396,7 +1408,7 @@
                         <div>
 
                             <h3 class="font-bold text-white">
-                                Desa Digital
+                                {{ $profil?->nama_desa ?: 'Desa Digital' }}
                             </h3>
 
                             <p class="text-xs text-gray-500">
@@ -1506,7 +1518,7 @@
                                 class="h-4 w-4 shrink-0"
                             ></i>
 
-                            Desa Digital
+                            {{ $profil?->nama_desa ?: 'Desa Digital' }}
 
                         </p>
 

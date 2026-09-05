@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Berita;
+use App\Models\ProfilDesa;
 
 class BeritaController extends Controller
 {
@@ -12,11 +13,16 @@ class BeritaController extends Controller
      */
     public function index()
     {
+        $profil = ProfilDesa::first();
+
         $beritas = Berita::where('status', 'published')
             ->latest()
             ->get();
 
-        return view('user.berita.index', compact('beritas'));
+        return view('user.berita.index', compact(
+            'profil',
+            'beritas'
+        ));
     }
 
     /**
@@ -27,6 +33,11 @@ class BeritaController extends Controller
         // Berita draft tidak boleh diakses publik.
         abort_if($berita->status !== 'published', 404);
 
-        return view('user.berita.show', compact('berita'));
+        $profil = ProfilDesa::first();
+
+        return view('user.berita.show', compact(
+            'profil',
+            'berita'
+        ));
     }
 }

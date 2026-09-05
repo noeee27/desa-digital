@@ -6,6 +6,7 @@ use App\Models\Umkm;
 use App\Models\Wisata;
 use App\Models\Berita;
 use App\Models\Galeri;
+use App\Models\ProfilDesa;
 
 class HomeController extends Controller
 {
@@ -14,6 +15,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // ==========================
+        // PROFIL DESA
+        // ==========================
+
+        $profil = ProfilDesa::first();
+
+
         // ==========================
         // UMKM AKTIF
         // ==========================
@@ -55,6 +63,7 @@ class HomeController extends Controller
         // ==========================
 
         return view('user.home', compact(
+            'profil',
             'umkms',
             'wisatas',
             'beritas',

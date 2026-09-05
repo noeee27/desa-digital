@@ -9,7 +9,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>{{ $galeri->judul }} - Desa Digital</title>
+    <title>{{ $galeri->judul }} - {{ $profil?->nama_desa ?: 'Desa Digital' }}</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -41,20 +41,28 @@
                     class="flex items-center gap-3"
                 >
 
-                    <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-600 sm:h-11 sm:w-11">
-
-                        <i
-                            data-lucide="landmark"
-                            class="h-5 w-5 text-white sm:h-6 sm:w-6"
-                        ></i>
-
+                  <div
+                        class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-green-600 sm:h-11 sm:w-11"
+                    >
+                        @if($profil?->foto)
+                            <img
+                                src="{{ asset('storage/' . $profil->foto) }}"
+                                alt="{{ $profil?->nama_desa ?? 'Logo Desa' }}"
+                                class="h-full w-full object-cover"
+                            >
+                        @else
+                            <i
+                                data-lucide="landmark"
+                                class="h-5 w-5 text-white sm:h-6 sm:w-6"
+                            ></i>
+                        @endif
                     </div>
 
 
                     <div>
 
-                        <h1 class="text-sm font-bold leading-tight text-gray-900 sm:text-lg">
-                            Desa Digital
+                       <h1 class="text-sm font-bold leading-tight text-gray-900 sm:text-lg">
+                            {{ $profil?->nama_desa ?: 'Desa Digital' }}
                         </h1>
 
                         <p class="hidden text-xs text-gray-500 sm:block">
@@ -491,7 +499,7 @@
                 <div>
 
                     <p class="font-bold">
-                        Desa Digital
+                        {{ $profil?->nama_desa ?: 'Desa Digital' }}
                     </p>
 
                     <p class="mt-1 text-sm text-green-200">
@@ -503,7 +511,7 @@
 
                 <p class="text-sm text-green-200">
 
-                    © {{ date('Y') }} Desa Digital
+                    © {{ date('Y') }} {{ $profil?->nama_desa ?: 'Desa Digital' }}
 
                 </p>
 

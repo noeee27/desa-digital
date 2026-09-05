@@ -29,16 +29,27 @@
             <a href="{{ route('home') }}" class="flex items-center gap-3">
 
                 <div
-                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-600 text-white sm:h-11 sm:w-11"
+                    class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-green-600 text-white sm:h-11 sm:w-11"
                 >
-                    <i data-lucide="landmark" class="h-5 w-5 sm:h-6 sm:w-6"></i>
+                    @if($profil?->foto)
+                        <img
+                            src="{{ asset('storage/' . $profil->foto) }}"
+                            alt="{{ $profil?->nama_desa ?? 'Logo Desa' }}"
+                            class="h-full w-full object-cover"
+                        >
+                    @else
+                        <i
+                            data-lucide="landmark"
+                            class="h-5 w-5 sm:h-6 sm:w-6"
+                        ></i>
+                    @endif
                 </div>
 
 
                 <div>
 
-                    <h1 class="text-sm font-bold leading-tight text-gray-900 sm:text-base">
-                        Desa Digital
+                  <h1 class="text-sm font-bold leading-tight text-gray-900 sm:text-base">
+                        {{ $profil?->nama_desa ?: 'Desa Digital' }}
                     </h1>
 
                     <p class="hidden text-xs text-gray-500 sm:block">
@@ -702,22 +713,28 @@
 
                 <div class="flex items-center gap-3">
 
-                    <div
-                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-600"
+                   <div
+                        class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-green-600"
                     >
-
-                        <i
-                            data-lucide="landmark"
-                            class="h-5 w-5"
-                        ></i>
-
+                        @if($profil?->foto)
+                            <img
+                                src="{{ asset('storage/' . $profil->foto) }}"
+                                alt="{{ $profil?->nama_desa ?? 'Logo Desa' }}"
+                                class="h-full w-full object-cover"
+                            >
+                        @else
+                            <i
+                                data-lucide="landmark"
+                                class="h-5 w-5 text-white"
+                            ></i>
+                        @endif
                     </div>
 
 
                     <div>
 
                         <p class="font-bold">
-                            Desa Digital
+                            {{ $profil?->nama_desa ?: 'Desa Digital' }}
                         </p>
 
                         <p class="text-xs text-green-200">
@@ -734,7 +751,7 @@
                 <p
                     class="text-left text-xs text-green-200 sm:text-right sm:text-sm"
                 >
-                    © {{ date('Y') }} Desa Digital.
+                    © {{ date('Y') }} {{ $profil?->nama_desa ?: 'Desa Digital' }}.
                     Semua hak dilindungi.
                 </p>
 

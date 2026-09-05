@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Galeri;
+use App\Models\ProfilDesa;
 
 class GaleriController extends Controller
 {
@@ -12,11 +13,16 @@ class GaleriController extends Controller
      */
     public function index()
     {
+        $profil = ProfilDesa::first();
+
         $galeris = Galeri::where('status', 'published')
             ->latest()
             ->get();
 
-        return view('user.galeri.index', compact('galeris'));
+        return view('user.galeri.index', compact(
+            'profil',
+            'galeris'
+        ));
     }
 
 
@@ -30,9 +36,11 @@ class GaleriController extends Controller
             abort(404);
         }
 
+        $profil = ProfilDesa::first();
+
         return view(
             'user.galeri.show',
-            compact('galeri')
+            compact('profil', 'galeri')
         );
     }
 }

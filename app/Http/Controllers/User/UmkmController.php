@@ -4,31 +4,35 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Umkm;
+use App\Models\ProfilDesa;
 
 class UmkmController extends Controller
 {
-    /**
-     * Menampilkan daftar UMKM untuk masyarakat.
-     */
     public function index()
     {
+        $profil = ProfilDesa::first();
+
         $umkms = Umkm::where('status', 'active')
             ->latest()
             ->get();
 
-        return view('user.umkm.index', compact('umkms'));
+        return view('user.umkm.index', compact(
+            'profil',
+            'umkms'
+        ));
     }
 
-    /**
-     * Menampilkan detail UMKM.
-     */
     public function show(Umkm $umkm)
     {
-        // Hanya UMKM aktif yang dapat dilihat publik
         if ($umkm->status !== 'active') {
             abort(404);
         }
 
-        return view('user.umkm.show', compact('umkm'));
+        $profil = ProfilDesa::first();
+
+        return view('user.umkm.show', compact(
+            'profil',
+            'umkm'
+        ));
     }
 }

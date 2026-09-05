@@ -38,13 +38,21 @@
 
                 <a href="{{ route('home') }}" class="flex items-center gap-3">
 
-                    <div
-                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-600 sm:h-11 sm:w-11"
+                   <div
+                        class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-green-600 sm:h-11 sm:w-11"
                     >
-                        <i
-                            data-lucide="landmark"
-                            class="h-5 w-5 text-white sm:h-6 sm:w-6"
-                        ></i>
+                        @if($profil?->foto)
+                            <img
+                                src="{{ asset('storage/' . $profil->foto) }}"
+                                alt="{{ $profil?->nama_desa ?? 'Logo Desa' }}"
+                                class="h-full w-full object-cover"
+                            >
+                        @else
+                            <i
+                                data-lucide="landmark"
+                                class="h-5 w-5 text-white sm:h-6 sm:w-6"
+                            ></i>
+                        @endif
                     </div>
 
 
@@ -976,14 +984,20 @@
                     <div class="flex items-center gap-3">
 
                         <div
-                            class="flex h-10 w-10 items-center justify-center rounded-xl bg-green-600"
+                            class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-green-600"
                         >
-
-                            <i
-                                data-lucide="landmark"
-                                class="h-5 w-5 text-white"
-                            ></i>
-
+                            @if($profil?->foto)
+                                <img
+                                    src="{{ asset('storage/' . $profil->foto) }}"
+                                    alt="{{ $profil?->nama_desa ?? 'Logo Desa' }}"
+                                    class="h-full w-full object-cover"
+                                >
+                            @else
+                                <i
+                                    data-lucide="landmark"
+                                    class="h-5 w-5 text-white"
+                                ></i>
+                            @endif
                         </div>
 
 
