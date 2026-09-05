@@ -111,12 +111,12 @@
                      Route belum dibuat, jadi sementara nonaktif
                 --}}
 
-                <span
-                    class="cursor-not-allowed rounded-lg px-3 py-2 text-sm font-medium text-gray-400 xl:px-4"
-                    title="Galeri belum tersedia"
+                <a
+                    href="{{ route('user.galeri.index') }}"
+                    class="rounded-lg px-3 py-2 text-sm font-medium text-gray-600 transition hover:bg-green-50 hover:text-green-700 xl:px-4"
                 >
                     Galeri
-                </span>
+                </a>
 
             </nav>
 
@@ -224,19 +224,13 @@
 
                 {{-- Galeri --}}
 
-                <div
-                    class="flex cursor-not-allowed items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-gray-400"
+               <a
+                    href="{{ route('user.galeri.index') }}"
+                    class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-gray-700 transition hover:bg-green-50 hover:text-green-700"
                 >
-
                     <i data-lucide="images" class="h-4 w-4"></i>
-
                     Galeri
-
-                    <span class="ml-auto text-xs">
-                        Segera
-                    </span>
-
-                </div>
+                </a>
 
             </nav>
 

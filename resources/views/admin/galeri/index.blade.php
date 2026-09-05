@@ -150,11 +150,10 @@
 
 
 
-            {{-- PROFIL DESA --}}
+           {{-- PROFIL DESA --}}
 
             <a
-                href="{{ route('user.profil') }}"
-                target="_blank"
+                href="{{ route('admin.profil.index') }}"
                 class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm text-green-100 transition hover:bg-green-900"
             >
 

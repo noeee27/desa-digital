@@ -81,7 +81,7 @@
                 </a>
 
                 <a
-                    href="#"
+                    href="{{ route('user.galeri.index') }}"
                     class="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 transition hover:bg-green-50 hover:text-green-700"
                 >
                     Galeri
@@ -146,8 +146,8 @@
                     Berita
                 </a>
 
-                <a
-                    href="#"
+               <a
+                    href="{{ route('user.galeri.index') }}"
                     class="block rounded-xl px-4 py-3 text-sm font-medium text-gray-700 hover:bg-green-50 hover:text-green-700"
                 >
                     Galeri

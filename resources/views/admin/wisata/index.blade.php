@@ -89,10 +89,9 @@
                 </a>
 
 
-                {{-- PROFIL DESA --}}
+               {{-- PROFIL DESA --}}
                 <a
-                    href="{{ route('user.profil') }}"
-                    target="_blank"
+                    href="{{ route('admin.profil.index') }}"
                     class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-green-100 transition hover:bg-green-800"
                 >
                     <i data-lucide="building-2" class="h-5 w-5"></i>
@@ -409,7 +408,7 @@
                                                 <i data-lucide="map-pin" class="h-4 w-4 shrink-0"></i>
 
                                                 <span>
-                                                    {{ $wisata->lokasi ?: '-' }}
+                                                    {{ $wisata->alamat ?: '-' }}
                                                 </span>
 
                                             </div>
@@ -435,18 +434,18 @@
 
                                                 </a>
 
-                                            @elseif ($wisata->kontak)
+                                          @elseif ($wisata->no_hp)
 
-                                                <a
-                                                    href="tel:{{ $wisata->kontak }}"
-                                                    class="inline-flex items-center gap-2 text-gray-700 hover:text-green-700"
-                                                >
+                                            <a
+                                                href="tel:{{ $wisata->no_hp }}"
+                                                class="inline-flex items-center gap-2 text-gray-700 hover:text-green-700"
+                                            >
 
-                                                    <i data-lucide="phone" class="h-4 w-4"></i>
+                                                <i data-lucide="phone" class="h-4 w-4"></i>
 
-                                                    {{ $wisata->kontak }}
+                                                {{ $wisata->no_hp }}
 
-                                                </a>
+                                            </a>
 
                                             @else
 

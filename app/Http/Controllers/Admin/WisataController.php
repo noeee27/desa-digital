@@ -34,20 +34,33 @@ class WisataController extends Controller
     {
         $validated = $request->validate([
             'nama' => ['required', 'string', 'max:255'],
-            'kategori' => ['required', 'string', 'max:100'],
+
+            // Kategori hanya boleh 3 pilihan
+            'kategori' => [
+                'required',
+                'in:Jeep,Kapal Kano,Snorkeling',
+            ],
+
             'deskripsi' => ['nullable', 'string'],
             'alamat' => ['nullable', 'string'],
             'maps_url' => ['nullable', 'url', 'max:500'],
             'no_hp' => ['nullable', 'string', 'max:20'],
             'whatsapp' => ['nullable', 'string', 'max:20'],
             'harga' => ['nullable', 'string', 'max:100'],
+
             'foto' => [
                 'nullable',
                 'image',
                 'mimes:jpg,jpeg,png,webp',
-                'max:2048'
+                'max:2048',
             ],
-            'status' => ['required', 'in:active,inactive'],
+
+            'status' => [
+                'required',
+                'in:active,inactive',
+            ],
+        ], [
+            'kategori.in' => 'Kategori hanya dapat dipilih dari Jeep, Kapal Kano, atau Snorkeling.',
         ]);
 
         // Upload foto
@@ -56,6 +69,7 @@ class WisataController extends Controller
                 ->store('wisata', 'public');
         }
 
+        // Simpan data wisata
         Wisata::create($validated);
 
         return redirect()
@@ -86,26 +100,39 @@ class WisataController extends Controller
     {
         $validated = $request->validate([
             'nama' => ['required', 'string', 'max:255'],
-            'kategori' => ['required', 'string', 'max:100'],
+
+            // Kategori hanya boleh 3 pilihan
+            'kategori' => [
+                'required',
+                'in:Jeep,Kapal Kano,Snorkeling',
+            ],
+
             'deskripsi' => ['nullable', 'string'],
             'alamat' => ['nullable', 'string'],
             'maps_url' => ['nullable', 'url', 'max:500'],
             'no_hp' => ['nullable', 'string', 'max:20'],
             'whatsapp' => ['nullable', 'string', 'max:20'],
             'harga' => ['nullable', 'string', 'max:100'],
+
             'foto' => [
                 'nullable',
                 'image',
                 'mimes:jpg,jpeg,png,webp',
-                'max:2048'
+                'max:2048',
             ],
-            'status' => ['required', 'in:active,inactive'],
+
+            'status' => [
+                'required',
+                'in:active,inactive',
+            ],
+        ], [
+            'kategori.in' => 'Kategori hanya dapat dipilih dari Jeep, Kapal Kano, atau Snorkeling.',
         ]);
 
         // Jika upload foto baru
         if ($request->hasFile('foto')) {
 
-            // Hapus foto lama
+            // Hapus foto lama dari storage
             if (
                 $wisatum->foto &&
                 Storage::disk('public')->exists($wisatum->foto)
@@ -118,6 +145,7 @@ class WisataController extends Controller
                 ->store('wisata', 'public');
         }
 
+        // Update data wisata
         $wisatum->update($validated);
 
         return redirect()

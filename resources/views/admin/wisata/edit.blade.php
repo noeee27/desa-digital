@@ -318,45 +318,24 @@
                                             </option>
 
                                             <option
-                                                value="Tempat Wisata"
-                                                @selected(old('kategori', $wisatum->kategori) === 'Tempat Wisata')
+                                                value="Jeep"
+                                                @selected(old('kategori', $wisatum->kategori) === 'Jeep')
                                             >
-                                                Tempat Wisata
+                                                Jeep
                                             </option>
 
                                             <option
-                                                value="Sopir Jeep"
-                                                @selected(old('kategori', $wisatum->kategori) === 'Sopir Jeep')
+                                                value="Kapal Kano"
+                                                @selected(old('kategori', $wisatum->kategori) === 'Kapal Kano')
                                             >
-                                                Sopir Jeep
+                                                Kapal Kano
                                             </option>
 
                                             <option
-                                                value="Pemandu Wisata"
-                                                @selected(old('kategori', $wisatum->kategori) === 'Pemandu Wisata')
+                                                value="Snorkeling"
+                                                @selected(old('kategori', $wisatum->kategori) === 'Snorkeling')
                                             >
-                                                Pemandu Wisata
-                                            </option>
-
-                                            <option
-                                                value="Penyewaan"
-                                                @selected(old('kategori', $wisatum->kategori) === 'Penyewaan')
-                                            >
-                                                Penyewaan
-                                            </option>
-
-                                            <option
-                                                value="Jasa Wisata"
-                                                @selected(old('kategori', $wisatum->kategori) === 'Jasa Wisata')
-                                            >
-                                                Jasa Wisata
-                                            </option>
-
-                                            <option
-                                                value="Lainnya"
-                                                @selected(old('kategori', $wisatum->kategori) === 'Lainnya')
-                                            >
-                                                Lainnya
+                                                Snorkeling
                                             </option>
 
                                         </select>

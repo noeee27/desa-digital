@@ -300,40 +300,22 @@
                                                 Pilih kategori
                                             </option>
 
-                                            <option value="Tempat Wisata"
-                                                @selected(old('kategori') === 'Tempat Wisata')
+                                            <option value="Jeep"
+                                                @selected(old('kategori') === 'Jeep')
                                             >
-                                                Tempat Wisata
+                                                Jeep
                                             </option>
 
-                                            <option value="Sopir Jeep"
-                                                @selected(old('kategori') === 'Sopir Jeep')
+                                            <option value="Kapal Kano"
+                                                @selected(old('kategori') === 'Kapal Kano')
                                             >
-                                                Sopir Jeep
+                                                Kapal Kano
                                             </option>
 
-                                            <option value="Pemandu Wisata"
-                                                @selected(old('kategori') === 'Pemandu Wisata')
+                                            <option value="Snorkeling"
+                                                @selected(old('kategori') === 'Snorkeling')
                                             >
-                                                Pemandu Wisata
-                                            </option>
-
-                                            <option value="Penyewaan"
-                                                @selected(old('kategori') === 'Penyewaan')
-                                            >
-                                                Penyewaan
-                                            </option>
-
-                                            <option value="Jasa Wisata"
-                                                @selected(old('kategori') === 'Jasa Wisata')
-                                            >
-                                                Jasa Wisata
-                                            </option>
-
-                                            <option value="Lainnya"
-                                                @selected(old('kategori') === 'Lainnya')
-                                            >
-                                                Lainnya
+                                                Snorkeling
                                             </option>
 
                                         </select>

@@ -551,8 +551,8 @@
                             <p
                                 class="mt-1 text-sm leading-6 text-gray-500"
                             >
-                                Tambahkan dan kelola informasi usaha
-                                masyarakat desa.
+                                Kelola informasi Jeep, Kapal Kano,
+                                dan Snorkeling.
                             </p>
 
                         </a>

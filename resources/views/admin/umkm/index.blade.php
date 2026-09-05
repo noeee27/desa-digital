@@ -92,8 +92,7 @@
 
                 {{-- Profil Desa --}}
                 <a
-                    href="{{ route('user.profil') }}"
-                    target="_blank"
+                    href="{{ route('admin.profil.index') }}"
                     class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-green-100 transition hover:bg-green-800"
                 >
                     <i data-lucide="building-2" class="h-5 w-5"></i>
