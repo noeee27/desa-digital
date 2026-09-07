@@ -44,4 +44,4 @@ RUN chown -R www-data:www-data \
 ENV APP_ENV=production
 ENV APP_DEBUG=false
 
-CMD ["frankenphp", "php-server", "--root", "/app/public", "--listen", ":8000"]
+CMD ["sh", "-c", "frankenphp php-server --root /app/public --listen :${PORT:-80}"]
