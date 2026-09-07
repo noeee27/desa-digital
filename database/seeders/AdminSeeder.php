@@ -12,11 +12,11 @@ class AdminSeeder extends Seeder
     {
         User::updateOrCreate(
             [
-                'email' => 'admin@desadigital.test',
+                'email' => 'Kim@pulekulon.com',
             ],
             [
                 'name' => 'Administrator Desa',
-                'password' => Hash::make('admin12345'),
+                'password' => Hash::make('pulekulon123'),
             ]
         );
     }
