@@ -29,17 +29,19 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 
-# Install PHP dependencies
-COPY composer.json composer.lock ./
+# Copy Laravel application
+COPY . .
 
+# Install PHP dependencies
 RUN composer install \
     --no-dev \
     --no-interaction \
     --prefer-dist \
-    --optimize-autoloader
+    --optimize-autoloader \
+    --no-scripts
 
-# Copy application
-COPY . .
+# Run Laravel package discovery after artisan exists
+RUN php artisan package:discover --ansi
 
 # Permissions
 RUN chown -R www-data:www-data \
