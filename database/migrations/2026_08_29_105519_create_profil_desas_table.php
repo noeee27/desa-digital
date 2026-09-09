@@ -11,35 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('profil_desas', function (Blueprint $table) {
+        Schema::create('profil_desas', function (Blueprint $table) {
+            $table->id();
 
-            $table->string('nama_desa')
-                ->nullable()
-                ->after('id');
+            $table->string('nama_desa')->nullable();
+            $table->text('deskripsi')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('telepon')->nullable();
+            $table->string('email')->nullable();
+            $table->string('website')->nullable();
+            $table->string('foto')->nullable();
 
-            $table->text('deskripsi')
-                ->nullable()
-                ->after('nama_desa');
-
-            $table->string('alamat')
-                ->nullable()
-                ->after('misi');
-
-            $table->string('telepon')
-                ->nullable()
-                ->after('alamat');
-
-            $table->string('email')
-                ->nullable()
-                ->after('telepon');
-
-            $table->string('website')
-                ->nullable()
-                ->after('email');
-
-            $table->string('foto')
-                ->nullable()
-                ->after('website');
+            $table->timestamps();
         });
     }
 
@@ -48,18 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('profil_desas', function (Blueprint $table) {
-
-            $table->dropColumn([
-                'nama_desa',
-                'deskripsi',
-                'alamat',
-                'telepon',
-                'email',
-                'website',
-                'foto',
-            ]);
-
-        });
+        Schema::dropIfExists('profil_desas');
     }
 };
