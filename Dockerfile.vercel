@@ -1,5 +1,6 @@
 FROM dunglas/frankenphp:php8.5-bookworm
 
+# System dependencies
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
@@ -10,22 +11,25 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     libonig-dev \
     libxml2-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install \
-        pdo_mysql \
-        mbstring \
-        bcmath \
-        exif \
-        pcntl \
-        intl \
-        gd \
-        zip \
     && rm -rf /var/lib/apt/lists/*
 
+# PHP extensions
+RUN install-php-extensions \
+    pdo_mysql \
+    mbstring \
+    bcmath \
+    exif \
+    pcntl \
+    intl \
+    gd \
+    zip
+
+# Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 
+# Install PHP dependencies
 COPY composer.json composer.lock ./
 
 RUN composer install \
@@ -34,8 +38,10 @@ RUN composer install \
     --prefer-dist \
     --optimize-autoloader
 
+# Copy application
 COPY . .
 
+# Permissions
 RUN chown -R www-data:www-data \
     storage \
     bootstrap/cache
